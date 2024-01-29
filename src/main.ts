@@ -1,14 +1,32 @@
-import './assets/main.css'
+import "./assets/main.css";
 
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
+import { createApp } from "vue";
+import { createPinia } from "pinia";
 
-import App from './App.vue'
-import router from './router'
+import App from "./App.vue";
+import router from "./router";
 
-const app = createApp(App)
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
 
-app.use(createPinia())
-app.use(router)
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyChPcs5MnVoqVCNKNZFkEMw0nsmElZSqVM",
+  authDomain: "sproutsy-3e59e.firebaseapp.com",
+  projectId: "sproutsy-3e59e",
+  storageBucket: "sproutsy-3e59e.appspot.com",
+  messagingSenderId: "74123636205",
+  appId: "1:74123636205:web:ccefef10bfdd0233120be4",
+  measurementId: "G-W7MTKYNT37",
+};
+initializeApp(firebaseConfig);
+const analytics = getAnalytics();
 
-app.mount('#app')
+const app = createApp(App);
+
+app.use(createPinia());
+app.use(router);
+
+app.mount("#app");
