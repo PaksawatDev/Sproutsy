@@ -4,12 +4,14 @@
   </div>
 </template>
 
-<style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
+<script setup lang="ts">
+import router from "@/router";
+import { getAuth } from "firebase/auth";
+
+const auth = getAuth();
+const user = auth.currentUser;
+
+if (!user) {
+  router.push("/sign-in");
 }
-</style>
+</script>

@@ -20,14 +20,15 @@ import router from "@/router";
 
 const email = ref("");
 const password = ref("");
-const errMsg = ref(); // ERROR message
 const register = () => {
-  createUserWithEmailAndPassword(getAuth(), email.value, password.value).then(
-    (data) => {
+  createUserWithEmailAndPassword(getAuth(), email.value, password.value)
+    .then((data) => {
       console.log("Successfully registered!");
-      router.push("/");
-    }
-  );
+      router.push("/sign-in");
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 };
 const signInWithGoogle = () => {
   const provider = new GoogleAuthProvider();
